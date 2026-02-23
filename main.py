@@ -50,6 +50,30 @@ SCRAPE_SOURCES = [
         "url": "https://machorka.espivblogs.net/category/books-pamphlets/",
         "container": "article h2",
         "filter": ""
+    },
+    {
+        "name": "The Anarchist Library - Anti-Civ",
+        "url": "https://theanarchistlibrary.org/category/topic/anti-civilization",
+        "container": ".archive-item", 
+        "filter": "" 
+    },
+    {
+        "name": "Prepper Website - PDF Library",
+        "url": "https://www.prepperwebsite.com/free-survival-pdf-manuals/",
+        "container": "li a",
+        "filter": ".pdf"
+    },
+    {
+        "name": "Urbex Hub - Guides",
+        "url": "https://urbexhub.com/category/guides/",
+        "container": "h2.entry-title",
+        "filter": ""
+    },
+    {
+        "name": "Wilderness Survival - Free Books",
+        "url": "http://www.wilderness-survival.net/free-books/",
+        "container": "p a",
+        "filter": ""
     }
 ]
 
