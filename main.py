@@ -21,38 +21,56 @@ CHANNEL = "@theuncivilizedarchive"
 MAX_POSTS_PER_RUN = 5
 SLEEP_BETWEEN_POSTS_SEC = 30
 
-# 1) Fonti RSS
+# ======================
+# FONTI AGGIORNATE
+# ======================
+
+# 1) Fonti RSS (Aggiornamenti frequenti e quotidiani)
 FEEDS = [
-    "https://theanarchistlibrary.org/listing.rss",
-    "https://offgridsurvival.com/feed/",
-    "https://news.mongabay.com/list/rewilding/feed/",
-    "https://crimethinc.com/feed"
+    "https://theanarchistlibrary.org/listing.rss",            # Anarchist Library (New)
+    "https://offgridsurvival.com/feed/",                      # Survival News
+    "https://news.mongabay.com/list/rewilding/feed/",         # Rewilding News
+    "https://crimethinc.com/feed",                            # Radical Theory
+    "https://www.prepperwebsite.com/feed/",                   # Daily Aggregator (Frequent)
+    "https://survivalblog.com/feed/",                         # Daily Survival
+    "https://practicalselfreliance.com/feed/",                # Foraging/Off-grid
+    "https://www.offthegridnews.com/feed/"                    # Self-reliance
 ]
 
-# 2) Fonti SCRAPING (Siti senza RSS)
-# container: il selettore dell'elemento che contiene il link
-# link_selector: il selettore specifico per l'<a> (opzionale)
+# 2) Fonti SCRAPING (Archivi e siti senza RSS)
+# container: selettore CSS per trovare l'elemento che contiene il link
 SCRAPE_SOURCES = [
     {
         "name": "Survivor Library",
         "url": "http://www.survivorlibrary.com/library-download.html",
         "container": "li", 
-        "filter": ".pdf" # Prende solo link che finiscono in .pdf
+        "filter": ".pdf"  # Solo manuali PDF
     },
     {
         "name": "Primitivism Writings",
         "url": "http://www.primitivism.com/writings.htm",
-        "container": "p",
+        "container": "p", # Contiene i link ai saggi classici
         "filter": "" 
     },
     {
         "name": "Machorka Books",
         "url": "https://machorka.espivblogs.net/category/books-pamphlets/",
-        "container": "article h2",
+        "container": "article h2", # Selettore per i titoli dei post
+        "filter": ""
+    },
+    {
+        "name": "The Anarchist Library - Anti-Civ",
+        "url": "https://theanarchistlibrary.org/category/topic/anti-civilization",
+        "container": ".archive-item",
+        "filter": ""
+    },
+    {
+        "name": "Urbex Hub - Guides",
+        "url": "https://urbexhub.com/category/guides/",
+        "container": "h2.entry-title",
         "filter": ""
     }
 ]
-
 UA_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
 }
