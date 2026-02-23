@@ -3,8 +3,8 @@ name: The Uncivilized Archive Bot
 on:
   schedule:
     # Gira ogni 2 ore (frequenza sicura per traduzioni e spam)
-    - cron: "0 */2 * * *"
-  workflow_dispatch: # Ti permette di farlo partire a mano per test
+    - cron:  "*/5 * * * *"
+  workflow_dispatch: 
 
 permissions:
   contents: write
