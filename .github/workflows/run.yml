@@ -1,0 +1,40 @@
+name: The Uncivilized Archive Bot
+
+on:
+  schedule:
+    # Gira ogni 2 ore (frequenza sicura per traduzioni e spam)
+    - cron: "0 */2 * * *"
+  workflow_dispatch: # Ti permette di farlo partire a mano per test
+
+permissions:
+  contents: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run bot
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        run: python main.py
+
+      - name: Commit and Push Database
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Salviamo archive.db per non ripetere i post al prossimo giro
+          git add archive.db
+          git commit -m "Update archive database [skip ci]" || echo "No changes to commit"
+          git push
