@@ -66,7 +66,6 @@ FEEDS = [
     "https://cache-advance.com/rss.asp?type=home",     # Tutorial tecnici e gadget
     "https://podcacher.com/feed/",                     # Storie di esplorazione e community
 ]
-]
 
 # 2) Fonti SCRAPING (Archivi e siti senza RSS)
 # container: selettore CSS per trovare l'elemento che contiene il link
